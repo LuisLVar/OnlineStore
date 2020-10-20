@@ -1,0 +1,81 @@
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+        <a class="navbar-brand" routerLink="/inicio">AmazonBB</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" > {{user.nombre}} </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/cliente', user.id]"><i class="fas fa-shopping-cart"></i> Inicio </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/producto', user.id]"><i class="fab fa-product-hunt"></i> Mis Productos </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/producto/add', user.id]"><i class="fab fa-product-hunt"></i>Nuevo Producto </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/categoria', user.id]"><i class="far fa-sticky-note"></i> Categorias </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/login"><i class="fas fa-sign-out-alt"></i> Logout </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br><br><br>
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="nombre">Nombre: </label>
+                            <input type="text" id="nombre" name="nombre" placeholder="Nombre" [(ngModel)]="product.nombre"
+                                class="form-control" autofocus>
+                        </div>
+                        <div class="form-group" *ngIf="edit">
+                            <label for="imagen">Imagen: </label>
+                            <input type="file" id="imagen" name="imagen" placeholder="Imagen" class="form-control" (change)="onFileSelected($event)">
+                        </div>
+                        <div class="form-group">
+                            <label for="descripcion">Descripcion: </label>
+                            <input type="text" id="descripcion" name="descripcion" placeholder="Descripcion"
+                                [(ngModel)]="product.descripcion" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="categoria">Categoria: </label>
+                            <select id="categoria" name="categoria" class="form-control" [(ngModel)]="product.id_categoria">
+                                <option *ngFor="let cat of categorias" [value]="cat.ID_CATEGORIA">{{cat.NOMBRE}}</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="precio">Precio: </label>
+                            <input type="text" id="precio" name="precio" placeholder="Precio"
+                                [(ngModel)]="product.precio" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="cantidad">Cantidad: </label>
+                            <input type="text" id="cantidad" name="cantidad" placeholder="Cantidad"
+                                [(ngModel)]="product.cantidad" class="form-control">
+                        </div>
+                        <button class="btn btn-success btn-block" (click)="edit ? updateProducto() : guardarProducto()">
+                            GUARDAR
+                        </button>
+                        <button class="btn btn-danger btn-block" (click)="borrarForm()">
+                            CANCELAR
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

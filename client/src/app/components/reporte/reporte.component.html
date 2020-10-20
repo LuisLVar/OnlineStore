@@ -1,0 +1,475 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" [routerLink]="['/users', user.id]">P&S</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/principal', user.id]"><i class="fas fa-home"></i> Principal</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/users', user.id]"><i class="fas fa-user"></i> Users</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/users/add', user.id]"><i class="fas fa-user-plus"></i> Add
+                        User</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/reportes', user.id]"><i class="far fa-file-alt"></i>
+                        Reportes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/bitacora', user.id]"><i class="far fa-file-alt"></i>
+                        Bitacora</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/perfil', user.id]"><i class="fas fa-user"></i> Perfil </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/login"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br>
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card text-center">
+                <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                    REPORTES
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">REPORTE</th>
+                                <th scope="col">DESCRIPCION</th>
+                                <th scope="col">VALORES</th>
+                                <th scope="col">GENERAR</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>Reporte 1</th>
+                                <td>El listado de todos los help desk y el promedio de su puntuación.</td>
+                                <td></td>
+                                <td>
+                                    <button class="btn btn-success" (click)="Reporte1()"><i class="far fa-file-alt"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Reporte 2</th>
+                                <td>El listado de todos los help desk de sexo masculino que hayan nacido arriba de
+                                    <B>X</B>
+                                    año.</td>
+                                <td>
+                                    <input type="text" id="yearx" name="yearx" placeholder="YYYY" [(ngModel)]="x1">
+                                </td>
+                                <td>
+                                    <button class="btn btn-success" (click)="Reporte2()"><i class="far fa-file-alt"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Reporte 3</th>
+                                <td>El listado de todos los administradores de sexo femenino que hayan nacido debajo de
+                                    <B>Y</B> año.
+                                </td>
+                                <td>
+                                    <input type="text" id="yeary" name="yeary" placeholder="YYYY" [(ngModel)]="x2">
+                                </td>
+                                <td>
+                                    <button class="btn btn-success" (click)="Reporte3()"><i class="far fa-file-alt"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Reporte 4</th>
+                                <td>Los clientes que más ganancias han generado ordenandos de mayor a menor.</td>
+                                <td></td>
+                                <td>
+                                    <button class="btn btn-success" (click)="Reporte4()"><i class="far fa-file-alt"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Reporte 5</th>
+                                <td>Todos los productos con el promedio de su puntuación para 5,4,3,2,1,0 estrellas.
+                                </td>
+                                <td></td>
+                                <td>
+                                    <button class="btn btn-success" (click)="Reporte5()"><i class="far fa-file-alt"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Reporte 6</th>
+                                <td>Top 3 de productos más vendidos.</td>
+                                <td></td>
+                                <td>
+                                    <button class="btn btn-success" (click)="Reporte6()"><i class="far fa-file-alt"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Reporte 7</th>
+                                <td>Top 3 de clientes que más productos tenga en su catálogo.</td>
+                                <td></td>
+                                <td>
+                                    <button class="btn btn-success" (click)="Reporte7()"><i class="far fa-file-alt"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Reporte 8</th>
+                                <td>Listado de todos los productos con su categoria.</td>
+                                <td></td>
+                                <td>
+                                    <button class="btn btn-success" (click)="Reporte8()"><i class="far fa-file-alt"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Reporte 9</th>
+                                <td>Todos los productos indicando la cantidad de comentarios asignados, publicados en Y
+                                    fecha.</td>
+                                <td></td>
+                                <td>
+                                    <button class="btn btn-success" (click)="Reporte9()"><i class="far fa-file-alt"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Reporte 10</th>
+                                <td>Todos los productos que tengan <B>X</B> cantidad disponible.</td>
+                                <td>
+                                    <input type="text" id="cantidad" name="cantidad" placeholder="#"
+                                        [(ngModel)]="x3"></td>
+                                <td>
+                                    <button class="btn btn-success" (click)="Reporte10()"><i class="far fa-file-alt"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Reporte 11</th>
+                                <td>Top 3 de productos con peor puntuación</td>
+                                <td></td>
+                                <td>
+                                    <button class="btn btn-success" (click)="Reporte11()"><i class="far fa-file-alt"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12" *ngIf="reporte1">
+            <div class="card text-center">
+                <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                    REPORTE 1
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">NOMBRE</th>
+                                <th scope="col">APELLIDO</th>
+                                <th scope="col">EMAIL</th>
+                                <th scope="col">PUNTEO</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let rep of reporte">
+                                <th>{{rep.ID_USER}}</th>
+                                <td>{{rep.NOMBRE}}</td>
+                                <td>{{rep.APELLIDO}}</td>
+                                <td>{{rep.EMAIL}}</td>
+                                <td>{{rep.TOTAL}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12" *ngIf="reporte2">
+            <div class="card text-center">
+                <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                    REPORTE 2
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">NOMBRE</th>
+                                <th scope="col">APELLIDO</th>
+                                <th scope="col">EMAIL</th>
+                                <th scope="col">FECHA</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let rep of reporte">
+                                <th>{{rep.ID_USER}}</th>
+                                <td>{{rep.NOMBRE}}</td>
+                                <td>{{rep.APELLIDO}}</td>
+                                <td>{{rep.EMAIL}}</td>
+                                <td>{{rep.FECHA}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12" *ngIf="reporte3">
+            <div class="card text-center">
+                <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                    REPORTE 3
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">NOMBRE</th>
+                                <th scope="col">APELLIDO</th>
+                                <th scope="col">EMAIL</th>
+                                <th scope="col">FECHA</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let rep of reporte">
+                                <th>{{rep.ID_USER}}</th>
+                                <td>{{rep.NOMBRE}}</td>
+                                <td>{{rep.APELLIDO}}</td>
+                                <td>{{rep.EMAIL}}</td>
+                                <td>{{rep.FECHA}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12" *ngIf="reporte4">
+            <div class="card text-center">
+                <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                    REPORTE 4
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">NOMBRE</th>
+                                <th scope="col">APELLIDO</th>
+                                <th scope="col">EMAIL</th>
+                                <th scope="col">GANANACIA</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let rep of reporte">
+                                <th>{{rep.ID_USER}}</th>
+                                <td>{{rep.NOMBRE}}</td>
+                                <td>{{rep.APELLIDO}}</td>
+                                <td>{{rep.EMAIL}}</td>
+                                <td>{{rep.GANANCIA}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12" *ngIf="reporte5">
+            <div class="card text-center">
+                <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                    REPORTE 5
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">PRODUCTO</th>
+                                <th scope="col">PUNTEO</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let rep of reporte">
+                                <th>{{rep.ID_PRODUCTO}}</th>
+                                <td>{{rep.NOMBRE}}</td>
+                                <td>{{rep.PUNTEO}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12" *ngIf="reporte6">
+            <div class="card text-center">
+                <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                    REPORTE 6
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">PRODUCTO</th>
+                                <th scope="col">VENDIDO</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let rep of reporte">
+                                <th>{{rep.ID_PRODUCTO}}</th>
+                                <td>{{rep.NOMBRE}}</td>
+                                <td>{{rep.VENDIDO}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12" *ngIf="reporte7">
+            <div class="card text-center">
+                <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                    REPORTE 7
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">NOMBRE</th>
+                                <th scope="col">APELLIDO</th>
+                                <th scope="col">EMAIL</th>
+                                <th scope="col">PRODUCTOS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let rep of reporte">
+                                <th>{{rep.ID_USER}}</th>
+                                <td>{{rep.NOMBRE}}</td>
+                                <td>{{rep.APELLIDO}}</td>
+                                <td>{{rep.EMAIL}}</td>
+                                <td>{{rep.PRODUCTOS}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12" *ngIf="reporte8">
+            <div class="card text-center">
+                <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                    REPORTE 8
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">PRODUCTO</th>
+                                <th scope="col">PRECIO</th>
+                                <th scope="col">CATEGORIA</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let rep of reporte">
+                                <th>{{rep.ID_PRODUCTO}}</th>
+                                <td>{{rep.NOMBRE}}</td>
+                                <td>{{rep.PRECIO}}</td>
+                                <td>{{rep.CATEGORIA}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12" *ngIf="reporte9">
+            <div class="card text-center">
+                <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                    REPORTE 9
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">PRODUCTO</th>
+                                <th scope="col">PRECIO</th>
+                                <th scope="col">COMENTARIOS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let rep of reporte">
+                                <th>{{rep.ID_PRODUCTO}}</th>
+                                <td>{{rep.NOMBRE}}</td>
+                                <td>{{rep.PRECIO}}</td>
+                                <td>{{rep.COMENTARIOS}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12" *ngIf="reporte10">
+            <div class="card text-center">
+                <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                    REPORTE 10
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">PRODUCTO</th>
+                                <th scope="col">PRECIO</th>
+                                <th scope="col">CANTIDAD</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let rep of reporte">
+                                <th>{{rep.ID_PRODUCTO}}</th>
+                                <td>{{rep.NOMBRE}}</td>
+                                <td>{{rep.PRECIO}}</td>
+                                <td>{{rep.CANTIDAD}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12" *ngIf="reporte11">
+            <div class="card text-center">
+                <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                    REPORTE 11
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">PRODUCTO</th>
+                                <th scope="col">PUNTEO</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let rep of reporte">
+                                <th>{{rep.ID_PRODUCTO}}</th>
+                                <td>{{rep.NOMBRE}}</td>
+                                <td>{{rep.PUNTEO}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

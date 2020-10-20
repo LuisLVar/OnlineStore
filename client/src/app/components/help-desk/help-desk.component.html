@@ -1,0 +1,85 @@
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+        <a class="navbar-brand" routerLink="/inicio">AmazonBB</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link"> {{user.nombre}} </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/helpdesk', user.id]"><i class="fas fa-inbox"></i> Inicio </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/perfil', user.id]"><i class="fas fa-user"></i> Perfil </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="" (click)="cerrarSesion()"><i class="fas fa-sign-out-alt"></i>
+                        Logout </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br><br><br>
+
+<div class="container">
+    <h3 class=" text-center">Help Chat</h3>
+    <div class="messaging">
+        <div class="inbox_msg">
+            <div class="inbox_people">
+                <div class="headind_srch">
+                    <div class="recent_heading">
+                        <h4>Inbox</h4>
+                    </div>
+                </div>
+                <div class="inbox_chat">
+                    <div class="chat_list active_chat">
+                        <div class="chat_people">
+                            <div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png"
+                                    alt="sunil"> </div>
+                            <div class="chat_ib">
+                                <h5>{{chatRoom.NOMBRE}} <span class="chat_date">Cliente</span></h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="mesgs">
+                <div class="msg_history">
+                    <!-- INICIAN LOS MENSAJES -->
+                    <div *ngFor="let msg of messages">
+                        <div class="incoming_msg" *ngIf="!msg.ESHD">
+                            <div class="incoming_msg_img"> <img src="https://ptetutorials.com/images/user-profile.png"
+                                    alt="sunil"> </div>
+                            <div class="received_msg">
+                                <div class="received_withd_msg">
+                                    <p>{{msg.MENSAJE}}</p>
+                                    <span class="time_date"> {{msg.FECHA}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="outgoing_msg" *ngIf="msg.ESHD">
+                            <div class="sent_msg">
+                                <p>{{msg.MENSAJE}}</p>
+                                <span class="time_date"> {{msg.FECHA}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="type_msg">
+                    <div class="input_msg_write">
+                        <input [(ngModel)]="message" (keyup)="$event.keyCode == 13 && sendMessage()" type="text"
+                            class="write_msg" placeholder="Type a message" />
+                        <button (click)="sendMessage()" class="msg_send_btn" type="button"><i
+                                class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

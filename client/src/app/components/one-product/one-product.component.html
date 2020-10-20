@@ -1,0 +1,118 @@
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+        <a class="navbar-brand" routerLink="/inicio">AmazonBB</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link"> {{user.nombre}} </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/cliente', user.id]"><i class="fas fa-shopping-cart"></i> Inicio
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/perfil', user.id]" *ngIf="loggeado"><i class="fas fa-user"></i> Perfil </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/producto', user.id]" *ngIf="loggeado"><i class="fas fa-shopping-cart"></i>
+                        Productos </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/login"><i class="fas fa-sign-out-alt"></i> Logout </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br><br><br>
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-6" *ngIf="esProducto">
+            <div class="card text-center">
+                <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                    {{product.nombre}}
+                </div>
+                <img src="{{product.imagen}}" class="card-img-top">
+                <div class="card-body">
+                    <p>Precio: $ {{product.precio}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6" *ngIf="esProducto">
+            <div class="card text-center">
+                <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                    Descripcion
+                </div>
+                <div class="card-body">
+                    <p> {{product.descripcion}}</p>
+                    <hr>
+                    <p>Categoria: {{product.categoria}}</p>
+                    <hr>
+                    <p>Fecha de Publicacion: {{product.fecha}}</p>
+                    <hr>
+                    <p>Cantidad restante: {{product.cantidad}}</p>
+                    <hr>
+                    <p>Vendedor: {{vendedor.nombre}} {{vendedor.apellido}}</p>
+                    <hr>
+                    <p><i class="fas fa-star"></i> {{promedio}}</p>
+                    <hr>
+                    <a class="btn btn-warning btn-block" [routerLink]="['/producto/comments', user.id, product.id]">
+                        COMENTARIOS
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12" *ngIf="loggeado">
+            <div class="card text-center">
+                <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                    CARRITO DE COMPRAS
+                </div>
+                <div class="card-body">
+                    <div *ngIf="esProducto">
+                        <label for="cantidad">Cantidad: </label>
+                        <input type="text" id="cantidad" name="cantidad" placeholder="#" [(ngModel)]="newCantidad">
+                        <button class="btn btn-info" (click)="addProduct()">
+                            ADD TO CART
+                        </button>
+                        <hr>
+                    </div>
+                    <table class="table">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">PRODUCTO</th>
+                                <th scope="col">CANTIDAD</th>
+                                <th scope="col">SUBTOTAL</th>
+                                <th scope="col">ELIMINAR</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let producto of carrito">
+                                <th scope="row">{{producto.NOMBRE}}</th>
+                                <td>{{producto.CANTIDAD}}</td>
+                                <td>{{producto.Total}}</td>
+                                <td>
+                                    <button class="btn btn-danger" (click)="eliminarCarrito(producto.ID_CARRITO, producto.ID_PRODUCTO)">
+                                        <i class="far fa-trash-alt"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <hr>
+                    <a class="btn btn-success ">
+                        GUARDAR
+                    </a>
+                    <a class="btn btn-warning" (click)="comprarCarrito()">
+                        COMPRAR
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

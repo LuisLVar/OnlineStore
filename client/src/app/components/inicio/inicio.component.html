@@ -1,0 +1,105 @@
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+        <a class="navbar-brand" routerLink="/inicio">{{portada.nombre}}</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/cliente', user.id]"><i class="fas fa-shopping-cart"></i> Inicio </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/login"><i class="fas fa-sign-in-alt"></i> Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<header>
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+            <!-- Slide One - Set the background image for this slide in the line below -->
+            <div class="carousel-item active"
+                style="background-image: url('https://cdn.hipwallpaper.com/i/27/77/dJkUIQ.jpg')">
+                <div class="carousel-caption d-none d-md-block">
+                    <h2 class="display-4 text-dark">Bienvenido a {{portada.nombre}}!</h2>
+                    <h4 class="text-dark">{{portada.slogan}}</h4>
+                    <br><br><br><br><br>
+                    <p class="lead text-muted">By Publishes & Sells</p>
+                </div>
+            </div>
+            <!-- Slide Two - Set the background image for this slide in the line below -->
+            <div class="carousel-item"
+                style="background-image:       linear-gradient(
+                    rgba(0, 0, 0, 0.315),
+                    rgba(0, 0, 0, 0.315)
+                  ), url('https://www.naveltec.com/attachments/Slider/0ee6a478-7ebc-165d-fe72-c690909ce03f/OnLine%20Shop%20No5.jpg')">
+                <br><br><br><br><br><br><br><br><br><br>
+                <div class="container">
+                    <div class="row">
+                        <!-- Free Tier -->
+                        <div class="col-lg-4">
+                            <div class="card mb-5 mb-lg-0">
+                                <div class="card-body">
+                                    <h5 class="card-title text-muted text-uppercase text-center">MISION</h5>
+                                    <hr>
+                                    <h6 class="card-price text-center"><span class="period">{{portada.mision}}
+                                    </span></h6>                                  
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Plus Tier -->
+                        <div class="col-lg-4">
+                            <div class="card mb-5 mb-lg-0">
+                                <div class="card-body">
+                                    <h5 class="card-title text-muted text-uppercase text-center">VISION</h5>
+                                    <hr>
+                                    <h6 class="card-price text-center"><span class="period">{{portada.vision}}</span></h6>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Pro Tier -->
+                        <div class="col-lg-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title text-muted text-uppercase text-center">ABOUT US</h5>
+                                    <hr>
+                                    <h6 class="card-price text-center"><span class="period">{{portada.about}}</span></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Slide Three - Set the background image for this slide in the line below -->
+            <div class="carousel-item"
+                style="background-image: url('http://innovationinsider.com.br/wp-content/uploads/2015/07/ecommerce.jpg')">
+                <div class="carousel-caption d-none d-md-block">
+                    <video class="display-4" controls>
+                        <source src="http://localhost:8081/images/portadaVideo.mp4" type="video/mp4">
+                      </video> 
+                    <h2 class="display-4">Presentacion</h2>
+                    <p class="lead text-muted">{{portada.video}}</p>
+                    <br><br><br>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</header>

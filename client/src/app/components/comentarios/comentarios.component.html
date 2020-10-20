@@ -1,0 +1,90 @@
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+        <a class="navbar-brand" routerLink="/inicio">AmazonBB</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link"> {{user.nombre}} </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/cliente', user.id]"><i class="fas fa-shopping-cart"></i> Inicio
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/perfil', user.id]" *ngIf="loggeado"><i class="fas fa-user"></i>
+                        Perfil </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/producto/details', user.id, product.id]"><i
+                            class="fas fa-shopping-cart"></i> Volver </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/login"><i class="fas fa-sign-out-alt"></i> Logout </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br><br><br>
+<div class="container p-4">
+    <div *ngIf="loggeado">
+        <div class="form-group">
+            <label for="puntuacion"> <i class="fas fa-star"></i> Puntuacion: </label>
+            <select id="puntuacion" name="puntuacion" class="form-control" [(ngModel)]="comment.puntuacion">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="titulo">Titulo: </label>
+            <input type="text" id="titulo" name="titulo" placeholder="Titulo" [(ngModel)]="comment.titulo"
+                class="form-control" autofocus>
+        </div>
+        <div class="form-group">
+            <label for="comentario">Comentario: </label>
+            <input type="text" id="comentario" name="comentario" placeholder="Comentario"
+                [(ngModel)]="comment.comentario" class="form-control">
+        </div>
+        <button class="btn btn-success btn-block" (click)="newComentario()">
+            Comentar
+        </button>
+        <hr class="style18">
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card text-center">
+                <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                    COMENTARIOS
+                </div>
+                <div class="card-body">
+                    <p><i class="fas fa-star"></i> {{estrella1}}</p>
+                    <p><i class="fas fa-star"></i><i class="fas fa-star"></i> {{estrella2}}</p>
+                    <p><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i> {{estrella3}}
+                    </p>
+                    <p><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i> {{estrella4}}</p>
+                    <p><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i>
+                        <i class="fas fa-star"></i> {{estrella5}}</p>
+                </div>
+                <div *ngFor="let comentario of comentarios">
+                    <div class="card-body">
+                        <hr><b> {{comentario.NOMBREUSER}}: </b> <b>{{comentario.TITULO}}</b> || <i
+                            class="fas fa-star"></i>
+                        <span> {{comentario.PUNTUACION}} </span> || Fecha: {{comentario.FECHA}}
+                        <hr>
+                        <p> {{comentario.COMENTARIO}} </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

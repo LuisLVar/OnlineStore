@@ -1,0 +1,55 @@
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+        <a class="navbar-brand" routerLink="/inicio">AmazonBB</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" > {{user.nombre}} </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/cliente', user.id]"><i class="fas fa-shopping-cart"></i> Inicio </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/producto', user.id]"><i class="fab fa-product-hunt"></i> Mis Productos </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/producto/add', user.id]"><i class="fab fa-product-hunt"></i>Nuevo Producto </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/categoria', user.id]"><i class="far fa-sticky-note"></i> Categorias </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" routerLink="/login"><i class="fas fa-sign-out-alt"></i> Logout </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br><br><br>
+<div class="container p-4">
+    <div class="row">
+        <div class="col-md-3" *ngFor="let producto of productos">
+            <div class="card text-center">
+                <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                    {{producto.NOMBRE}}
+                    <button class="btn btn-danger" (click)="eliminarProduct(producto.ID_PRODUCTO)">
+                        <i class="far fa-trash-alt"></i>
+                    </button>
+                </div>
+                <img src = "{{producto.IMAGEN}}" 
+                    class="card-img-top">
+                <div class="card-body">
+                    <p> $ {{producto.PRECIO}}</p>
+                    <a class="btn btn-info btn-block" [routerLink]="['/producto/edit', producto.ID_USER, producto.ID_PRODUCTO]">
+                        EDITAR PRODUCTO
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
